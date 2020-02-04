@@ -3,7 +3,6 @@
 f90 = gfortran
 
 fobjs = sub2d.o sub3d.o
-
 f2pyo = mo_test.o
 
 

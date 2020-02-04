@@ -34,7 +34,7 @@ contains
         integer, intent(in) :: x, y
         real*4, intent(inout) :: array(x, y)
         write(*,*) 'array2d, shape: ', shape(array)
-        call sub2d(array)
+        call sub2d(array, x, y)
     end subroutine py_sub2d
 
     subroutine py_sub3d(array, array_out, x, y, z)
@@ -44,7 +44,7 @@ contains
         real*4, intent(out) :: array_out(x, y, z)
         write(*,*) 'array3d, shape: ', shape(array)
         array_out = array
-        call sub3d(array_out)
+        call sub3d(array_out, x, y, z)
     end subroutine py_sub3d
 
 end module mo_test

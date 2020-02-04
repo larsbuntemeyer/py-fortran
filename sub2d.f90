@@ -1,9 +1,9 @@
 
-!subroutine sub2d(array)
-subroutine sub2d(array)
+subroutine sub2d(array, x, y)
 
       implicit none
-      real*4, intent(inout) :: array(144*143)
+      integer, intent(in)   :: x, y
+      real*4, intent(inout) :: array(x, y)
 !
       write(*,*) 'sub2d, shape: ', shape(array)
       array = sqrt(array)

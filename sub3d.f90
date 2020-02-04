@@ -1,15 +1,17 @@
 
-subroutine sub3d(array)
+subroutine sub3d(array, x, y, z)
 
       implicit none
-      real*4, intent(inout) :: array(144*143,39)
+      integer, intent(in) :: x, y, z
+      real*4, intent(inout) :: array(x, y, z)
       integer :: ij,i,j,k
       write(*,*) 'sub3d, shape: ', shape(array)
-!      array = sqrt(array)
-      do k=1,39
-        do ij=1,144*143
-           array(ij,k) = sqrt(array(ij,k))
+      do k=1,z
+        do j=1,y
+          do i=1,x
+           array(i,j,k) = sqrt(array(i,j,k))
+          enddo
         enddo
-      enddo 
+      enddo
 
 end subroutine sub3d
