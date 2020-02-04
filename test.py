@@ -45,7 +45,9 @@ fnc2d = nc2d[timelevel].T
 # call the fortran subroutines and store the results
 # you could do some complex stuff here.
 fnc3d_result = mo_test.mo_test.array3d(fnc3d)
-fnc3d_result = mo_test.mo_test.py_sub3d(fnc3d_result)
+fnc3d_result = mo_test.mo_test.py_sub3d(fnc3d)
+fnc2d_result = mo_test.mo_test.array2d(fnc2d)
+fnc2d_result = mo_test.mo_test.py_sub2d(fnc2d)
 # -- CALL TO FORTRAN ROUTINES --
 
 # transpose the data back to netcdf style and store the output.

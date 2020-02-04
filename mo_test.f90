@@ -23,50 +23,54 @@
 ! still have allocatables. However, they have to be linked with
 ! f2py, e.g., like in the Makefile
 !
+! written by Lars Buntemeyer
+!
 module mo_test
 
 
 contains
 
-    function test_func(x,y)
-        implicit none
-        integer, intent(in) :: x,y
-        integer :: test_func
-        test_func = x*y
-    end function test_func
-
     subroutine array3d(array, array_out, x, y, z)
+        ! Example for returning a 3d fortran array to python
         implicit none
-        integer, intent(in) :: x, y, z
-        real*4, intent(in) :: array(x, y, z)
-        real*4, intent(out) :: array_out(x, y, z)
+        integer, intent(in)  :: x, y, z
+        real*4,  intent(in)  :: array(x, y, z)
+        real*4,  intent(out) :: array_out(x, y, z)
         write(*,*) 'array3d, shape: ', shape(array)
         array_out = array**2
         return
     end subroutine array3d
 
-    subroutine array2d(array, x, y)
+    subroutine array2d(array, array_out, x, y)
+        ! Example for returning a 2d fortran array to python
         implicit none
-        integer, intent(in) :: x, y
-        real*4, intent(inout) :: array(x, y)
+        integer, intent(in)  :: x, y
+        real*4,  intent(in)  :: array(x, y)
+        real*4,  intent(out) :: array_out(x, y)
         write(*,*) 'array2d, shape: ', shape(array)
-        array = array**2
+        array_out = array**2
     end subroutine array2d
 
-    subroutine py_sub2d(array, x, y)
+    subroutine py_sub2d(array, array_out, x, y)
+        ! Example for returning a 2d fortran array which is
+        ! the result from a call to an external subroutine.
         implicit none
-        integer, intent(in) :: x, y
-        real*4, intent(inout) :: array(x, y)
-        write(*,*) 'array2d, shape: ', shape(array)
-        call sub2d(array, x, y)
+        integer, intent(in)  :: x, y
+        real*4,  intent(in)  :: array(x, y)
+        real*4,  intent(out) :: array_out(x, y)
+        write(*,*) 'py_sub2d, shape: ', shape(array)
+        array_out = array
+        call sub2d(array_out, x, y)
     end subroutine py_sub2d
 
     subroutine py_sub3d(array, array_out, x, y, z)
+        ! Example for returning a 3d fortran array which is
+        ! the result from a call to an external subroutine.
         implicit none
-        integer, intent(in) :: x, y, z
-        real*4, intent(in) :: array(x, y, z)
-        real*4, intent(out) :: array_out(x, y, z)
-        write(*,*) 'array3d, shape: ', shape(array)
+        integer, intent(in)  :: x, y, z
+        real*4,  intent(in)  :: array(x, y, z)
+        real*4,  intent(out) :: array_out(x, y, z)
+        write(*,*) 'py_sub3d, shape: ', shape(array)
         array_out = array
         call sub3d(array_out, x, y, z)
     end subroutine py_sub3d
