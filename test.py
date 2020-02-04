@@ -9,9 +9,7 @@ from netCDF4 import Dataset
 # our fortran module compiled with f2py
 import mo_test
 
-# define input and output netcdf file
-filein  = 'GFILE_allvars_CMIP5_IPSL-CM5A-MR_historical_r1i1p1_19750101.nc'
-fileout = 'output.nc' 
+# define input and output netcdf file (data is available at DKRZ)
 tas_file = '/pool/data/CMIP5/cmip5/output1/MPI-M/MPI-ESM-LR/historical/mon/atmos/Amon/r1i1p1/v20120315/tas/tas_Amon_MPI-ESM-LR_historical_r1i1p1_185001-200512.nc'
 ta_file  = '/pool/data/CMIP5/cmip5/output1/MPI-M/MPI-ESM-LR/historical/mon/atmos/Amon/r1i1p1/v20120315/ta/ta_Amon_MPI-ESM-LR_historical_r1i1p1_185001-185912.nc'
 
@@ -42,9 +40,12 @@ timelevel = 0
 fnc3d = nc3d[timelevel].T
 fnc2d = nc2d[timelevel].T
 
+# -- CALL TO FORTRAN ROUTINES --
 # call the fortran subroutines and store the results
+# you could do some complex stuff here.
 fnc3d_result = mo_test.mo_test.array3d(fnc3d)
 fnc3d_result = mo_test.mo_test.py_sub3d(fnc3d_result)
+# -- CALL TO FORTRAN ROUTINES --
 
 # transpose the data back to netcdf style and store the output.
 out3d[:] = fnc3d_result.T
