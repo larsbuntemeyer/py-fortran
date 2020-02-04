@@ -32,6 +32,17 @@ External subroutines which are not compiled with f2py and can
 still have allocatables. However, they have to be linked with
 f2py, e.g., like done in the `Makefile`.
 
+Note that the name of the compiled output library from `f2py` should be
+`mo_test.so`, however, depending on your system and python version the name
+could be different. You might have to rename it to `mo_test.so` which
+can then be imported in python. It's also helpful to have a look at the
+docstrings, e.g.
+
+    import mo_test
+    print(mo_test.mo_test.__doc__)
+
+That's it!
+
 # requirements
 
 * f2py
