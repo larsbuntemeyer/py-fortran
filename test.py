@@ -12,11 +12,12 @@ import mo_test
 # define input and output netcdf file (data is available at DKRZ)
 tas_file = '/pool/data/CMIP5/cmip5/output1/MPI-M/MPI-ESM-LR/historical/mon/atmos/Amon/r1i1p1/v20120315/tas/tas_Amon_MPI-ESM-LR_historical_r1i1p1_185001-200512.nc'
 ta_file  = '/pool/data/CMIP5/cmip5/output1/MPI-M/MPI-ESM-LR/historical/mon/atmos/Amon/r1i1p1/v20120315/ta/ta_Amon_MPI-ESM-LR_historical_r1i1p1_185001-185912.nc'
+out_file = 'output.nc'
 
 # open datasets
 ta_dataset  = Dataset(ta_file)
 tas_dataset = Dataset(tas_file)
-dataout     = Dataset(fileout, mode='w')
+dataout     = Dataset(out_file, mode='w')
 
 # example of 3d and 2d variable
 var3d = 'ta'
