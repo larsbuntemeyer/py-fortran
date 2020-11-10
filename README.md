@@ -1,10 +1,18 @@
 # py-fortran
 
 A test tool to connect netcdf, python and fortran. This is part of my work to get
-familiar to python fortran interfaces. A more elegant way is to use setuptools
+familiar to python fortran interfaces.
+A more elegant way is to use setuptools
 to handle fortran [extensions](https://docs.python.org/3/distutils/setupscript.html#extension-names-and-packages)
 and builds. See also [here](https://github.com/perrette/python-fortran-cpp-template) for an example
 of extending a python package with fortran and c code.
+
+# fortran refactoring
+
+Refactoring fortran code can become quite cumbersome. E.g, IO in fortran requires lots of boilerplate code to
+read and write NetCDF files. When IO is not really a bottleneck (like in many data pre and postprocessing workflows),
+python offers much more flexibility (and also parallel IO!). Connecting both worlds can be very efficient
+when old legacy code can be combined with python's flexibility.
 
 # description
 
