@@ -1,6 +1,10 @@
 # py-fortran
 
-a test tool to connect netcdf, python and fortran
+A test tool to connect netcdf, python and fortran. This is part of my work to get
+familiar to python fortran interfaces. A more elegant way is to use setuptools
+to handle fortran [extensions](https://docs.python.org/3/distutils/setupscript.html#extension-names-and-packages)
+and builds. See also [here](https://github.com/perrette/python-fortran-cpp-template) for an example
+of extending a python package with fortran and c code.
 
 # description
 
