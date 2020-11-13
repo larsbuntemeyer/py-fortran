@@ -37,6 +37,9 @@ python script like this:
 have to be passed explicitly. However, the `f2py` compiler
 recognizes them as array dimensions and removes them from the
 python interface, so they are not required in the python call.
+In general, it seems to be a good idea to explicitly write interfaces
+as entries to your Fortran legacy code from python and not just
+simply compile all code for use in python.
 
 See test.py for some example calls.
 
